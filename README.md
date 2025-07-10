@@ -6,9 +6,9 @@ RetroLink is an easy-to-use, easy-to-adapt, and easy-to-adjust way of connecting
 
 ## 📦 Hardware
 
-RetroLink hardware is as simple as an ESP32 and a level shifter (to convert 5 V to 3.3 V).  
+RetroLink hardware is as simple as an ESP32 and a level shifter (to convert 5 V to 3.3 V).
 
-![RetroLink Hardware](/Images/hardware.jpg)
+<img src="/Images/hardware.jpg" width="300px" alt="RetroLink Hardware" />
 
 ---
 
@@ -40,4 +40,4 @@ In **`demo.s`** you’ll find a sample program that:
 - **Fully emulated**: Works identically in hardware and in the emulator.  
 - **Extensible server support**: A companion server will be provided soon for easy multiplayer game and program development.
 
-Stay tuned for server details and more examples!  
+Stay tuned for server details and more examples!
