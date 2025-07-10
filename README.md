@@ -14,7 +14,7 @@ RetroLink hardware is as simple as an ESP32 and a level shifter (to convert 5 V 
 
 ## 🖥️ Emulator
 
-In the `Emulator/` folder you'll find a custom build of the X16 Emulator with RetroLink support baked in. This lets you write programs for the emulator that connect to the Internet. It’s the normal X16 Emulator—you can still run your existing programs—only now there’s an emulated I²C-connected RetroLink device.
+In the `/emulator` folder you'll find a custom build of the X16 Emulator with RetroLink support baked in. This lets you write programs for the emulator that connect to the Internet. It’s the normal X16 Emulator—you can still run your existing programs—only now there’s an emulated I²C-connected RetroLink device.
 
 1. **Download** the provided emulator binary into the same directory as your regular emulator executable.  
 2. **Backup** your old emulator in case you need to revert.
@@ -35,7 +35,7 @@ In **`demo.s`** you’ll find a sample program that:
 
 ## 🎯 Design Goals
 
-- **Cost-effective**: Uses inexpensive, readily available parts (ESP32 + level shifter).  
+- **Cost-effective**: Uses only two inexpensive, readily available parts (ESP32 + level shifter).  
 - **DIY-friendly**: Minimal wiring and components—perfect for home build.  
 - **Fully emulated**: Works identically in hardware and in the emulator.  
 - **Extensible server support**: A companion server will be provided soon for easy multiplayer game and program development.
