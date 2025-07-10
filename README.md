@@ -23,7 +23,7 @@ In the `/emulator` folder you'll find a custom build of the X16 Emulator with Re
 
 ## 🚀 Demo
 
-In **`demo.s`** you’ll find a sample program that:
+In **`Assembly/demo.s`** you’ll find a sample program that:
 
 - Checks if a RetroLink device is present  
 - Prints the RetroLink firmware version  
