@@ -41,3 +41,8 @@ In **`Assembly/demo.s`** you’ll find a sample program that:
 - **Extensible server support**: A companion server will be provided soon for easy multiplayer game and program development.
 
 Stay tuned for server details and more examples!
+
+## ⚠️ Disclaimer
+
+The current version is just a proof-of-concept. Although it works, it might not be very usable depending on your use case. Starting from version 1.0, a lot more features and improvements will be available.
+
