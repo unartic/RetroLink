@@ -8,7 +8,7 @@ RetroLink is an easy-to-use, easy-to-adapt, and easy-to-adjust way of connecting
 
 RetroLink hardware is as simple as an ESP32 and a level shifter (to convert 5 V to 3.3 V).  
 
-![RetroLink Hardware](/images/hardware.jpg)
+![RetroLink Hardware](/Images/hardware.jpg)
 
 ---
 
