@@ -12,7 +12,7 @@ RetroLink hardware is as simple as an ESP32 and a level shifter (to convert 5 
 
 The level shifter converts the 5 V I²C bus of the Commander X16 to 3.3 V as that is what the ESP32 can use. I use this component:
 
-* Europa: [2-Channel I²C Level Converter](https://funduinoshop.com/en/electronic-modules/interfaces-converters/signal-converter/2-channel-i2c-level-converter-3-5v?gQT=2)
+* Europe: [2-Channel I²C Level Converter](https://funduinoshop.com/en/electronic-modules/interfaces-converters/signal-converter/2-channel-i2c-level-converter-3-5v?gQT=2)
 * USA: [Bi-Directional Level Converter Module](https://www.amazon.com/Channel-Converter-Bi-Directional-Module-Arduino/dp/B09SQ1NJC9)
 * Ali: [AliExpress 2-Channel I²C Level Converter](https://nl.aliexpress.com/item/1005008505093208.html?gatewayAdapt=glo2nld) (not exactly the same, but it should work also).
 
@@ -41,7 +41,7 @@ In the `/emulator` folder you'll find a custom build of the X16 Emulator with Re
 
 In **`Assembly/demo.s`** you’ll find a sample program that:
 
-* Checks if a RetroLink device is present
+* Checks if RetroLink is present
 * Prints the RetroLink firmware version
 * Connects to Wi‑Fi (configure your SSID & password in `demo.s`)
 * Performs an HTTP GET request
