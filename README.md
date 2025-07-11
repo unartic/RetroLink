@@ -6,7 +6,7 @@ RetroLink is an easy-to-use, easy-to-adapt, and easy-to-adjust way of connecting
 
 ## 📦 Hardware
 
-RetroLink hardware is as simple as an ESP32 and a level shifter (to convert 5 V to 3.3 V).
+RetroLink hardware is as simple as an ESP32 and a level shifter (to convert 5 V to 3.3 V). In de future I'll provide a pcb-design to make it into an expansion card and maybe even sell pre-build versions. Though, one of the goals is to experiment with it yourself.
 
 ### Level shifter
 
@@ -59,6 +59,10 @@ In **`Assembly/demo.s`** you’ll find a sample program that:
 * **Extensible server support**: A companion server will be provided soon for easy multiplayer game and program development.
 
 Stay tuned for server details and more examples!
+
+## Where to buy?
+
+As the project stands it is not for sale as an expansion card or a kit. If you want to follow along with the hardware side of things you can purchase the components yourself. Depending on interest I might change it to a pre-build expansion card.
 
 ## ⚠️ Disclaimer
 
