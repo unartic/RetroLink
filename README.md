@@ -30,10 +30,12 @@ In this picture you'll see an ESP32-S2 board with the SDA line connected to pin�
 
 ## 🖥️ Emulator
 
-In the `/emulator` folder you'll find a custom build of the X16 Emulator with RetroLink support baked in. This lets you write programs for the emulator that connect to the Internet. It’s the normal X16 Emulator—you can still run your existing programs—only now there’s an emulated I²C-connected RetroLink device.
+In the `/emulator` folder you'll find a custom build of the X16 Emulator with RetroLink support baked in. This lets you write programs for the emulator that connect to the Internet. It’s the normal X16 Emulator—you can still run your existing programs—only now there’s an emulated I²C-connected RetroLink device. Currently I only have a Windows and Linux build. If anyone would like to help me with a Mac-build, please contact me :-)
 
 1. **Download** the provided emulator binary into the same directory as your regular emulator executable.
 2. **Backup** your old emulator in case you need to revert.
+
+As the RetroLink actualy does not connect to any wifi network when on the Emulator (it just uses the hosts internet connection), on the emulator you can just run `demo.prg`.
 
 ---
 
