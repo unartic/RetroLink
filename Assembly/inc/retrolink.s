@@ -7,7 +7,9 @@ REG_WIFI_STATUS     = $04
 REG_HTTP_GET        = $10 
 REG_HTTP_STATE      = $11
 REG_HTTP_RESPONSE   = $12
-REG_HTTP_LEFT       = $13
+REG_TERMINAL_HOST   = $20
+REG_TERMINAL_IN     = $21
+REG_TERMINAL_OUT    = $22
 
 BLOCK_SIZE = 120
     
@@ -103,8 +105,18 @@ http_get:
     jsr http_get_response_length
     rts
 
+open_session:
+    sei
+        ;send url in x/y to RetroLink
+        lda #REG_TERMINAL_HOST
+        jsr send_i2c_stream
+
+    cli
+    rts
+
 ; Reads the length of the http response
 http_get_response_length:
+    rts
     lda #<http_bytes_left
     sta ptr
     lda #>http_bytes_left
@@ -112,7 +124,7 @@ http_get_response_length:
     
     sei
     lda #I2C_SLAVE
-    ldx #REG_HTTP_LEFT
+  ;  ldx #REG_HTTP_LEFT
     ldy #4
     jsr read_i2c_stream_by_len
     cli
@@ -125,29 +137,75 @@ http_get_response_length:
 ; Out: 
 ;   Nothing
 ;------------------------------------------------------------------
-read_http_response:
+read_http_response_to_mem:
+    sei
+        
+
+        
+        http_read_block_loop:
+            jsr read_init   ;init i2c transfer
+            ldy #0
+            :
+                phy
+                jsr i2c_read_byte_with_ack
+                ply
+                sta (ptr),y
+              ;  jsr dbg_char
+                iny
+                cpy #120
+                bne :-
+            ;Get summary byte (bit 7 set: more data, unset: no more data, bit 0-6: true bytes in this read
+            jsr i2c_read_byte
+            pha
+                ;increment pointer with true amount of bytes
+                and #%01111111  ;max 120
+                clc
+                adc ptr
+                sta ptr
+                lda ptr+1
+                adc #0
+                sta ptr+1
+                
+            pla
+            jsr i2c_stop_condition  ;end i2c transfer
+            ;if bit #7 is set, we want more data
+            bit #%10000000
+            bne http_read_block_loop
+    cli
+
+    rts
+
+goto_not_valid_responce_from_i2c2: jmp not_valid_responce_from_i2c
+read_init:
+    jsr i2c_start_condition
+        
+    lda #I2C_SLAVE
+    asl
+    ora #I2C_WRITE
+    jsr i2c_send_byte    ;send slave number
+    bcs goto_not_valid_responce_from_i2c2
+
+    lda #REG_HTTP_RESPONSE
+    jsr i2c_send_byte    
+    bcs goto_not_valid_responce_from_i2c2     
+    
+    jsr i2c_stop_condition
+    jsr i2c_start_condition
+    lda i2c_tmp
+    asl
+    ora #I2C_READ
+    jsr i2c_send_byte    ;send slave number
+    bcs goto_not_valid_responce_from_i2c2
+
+    rts
+
+read_http_responseOLD:
     sei
 
         ;due to the wire lib blocksize is limited.
         read_next_block:
         
         ldy #BLOCK_SIZE             ;Retrolink will send 120byte blocks
-        
-        ;Check if next block is 120bytes or larger
-        lda http_bytes_left+3
-        bne not_less_then_block_size
-        lda http_bytes_left+2
-        bne not_less_then_block_size    
-        lda http_bytes_left+1
-        bne not_less_then_block_size       
-        lda http_bytes_left
-        cmp #(BLOCK_SIZE+1)
-        bcs not_less_then_block_size
-        ldy http_bytes_left
-        not_less_then_block_size:
-
-        sty retrolink_tmp       ;the blocksize of the next block
-        
         lda #I2C_SLAVE
         ldx #REG_HTTP_RESPONSE
         jsr read_i2c_stream_by_len      ;read up to 120 bytes (y=number of bytes)

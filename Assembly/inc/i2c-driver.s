@@ -179,9 +179,11 @@
     ;X -> register to read
     ;Result in A    
     i2c_read_register:
+
         sta i2c_tmp
         stx i2c_tmp2
-
+       
+        
         jsr i2c_start_condition
         lda i2c_tmp
         asl
@@ -195,6 +197,9 @@
         bcs not_valid_responce_from_smc     
         
         jsr i2c_stop_condition
+        lda #$00
+  
+
         jsr i2c_start_condition
         lda i2c_tmp
         asl
@@ -205,7 +210,7 @@
         
         jsr i2c_read_byte
         jsr i2c_stop_condition
-
+        
         clc
         
         rts
@@ -248,6 +253,9 @@
         rts
         
     not_valid_responce_from_smc:
+        lda #'x'
+        jsr dbg_char
+        jsr i2c_stop_condition
       ;  cli
         sec
         rts
