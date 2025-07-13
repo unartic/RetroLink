@@ -1,4 +1,4 @@
-# RetroLink V0.2
+# RetroLink V0.3
 
 RetroLink is an easy-to-use, easy-to-adapt, and easy-to-adjust way of connecting your Commander X16 to the Internet—both in hardware and in the emulator.
 
@@ -35,7 +35,7 @@ In the `/emulator` folder you'll find a custom build of the X16 Emulator with Re
 1. **Download** the provided emulator binary into the same directory as your regular emulator executable.
 2. **Backup** your old emulator in case you need to revert.
 
-As the RetroLink actualy does not connect to any wifi network when on the Emulator (it just uses the hosts internet connection), on the emulator you can just run `demo.prg`.
+As the RetroLink actualy does not connect to any wifi network when on the Emulator (it just uses the hosts internet connection), on the emulator you can just run `httpget.prg`.
 
 ---
 

@@ -11,8 +11,8 @@ SCREEN_SET_CHARSET  := $FF62
     ptr2:   .res 2
 .segment "DATA"
     ;Wifinetwork to connect to. Fill in your own ssid and password
-    wifi_ssid:          .literal "BR53",$0
-    wifi_pw:            .literal "hp99plbnx",$0
+    wifi_ssid:          .literal "your ssid",$0
+    wifi_pw:            .literal "your pwd",$0
 
     ;Buffer to store http-get result in
     result_buffer:        .res 1024*20  ;10kb
